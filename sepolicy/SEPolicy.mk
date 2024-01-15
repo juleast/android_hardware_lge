@@ -4,7 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-ifeq ($(SEPOLICY_PATH), device/qcom/sepolicy_vndr-legacy-um)
+ifneq (,$(filter sdm845 sdm710, $(TARGET_BOARD_PLATFORM)))
+	SEPOLICY_PLATFORM := legacy-um
+else ifeq ($(SEPOLICY_PATH), device/qcom/sepolicy_vndr-legacy-um)
 	SEPOLICY_PLATFORM := vndr
 else
 	SEPOLICY_PLATFORM := legacy-um
